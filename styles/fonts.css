@@ -1,0 +1,26 @@
+[class*="font"]{
+  line-height: var(--font-line-height-1);
+}
+
+[class*="font-1"]{
+  font-size: var(--font-size-1);
+}
+[class*="font-2"]{
+  font-size: var(--font-size-2);
+}
+[class*="font-3"]{
+  font-size: var(--font-size-3);
+}
+[class*="font-4"]{
+  font-size: var(--font-size-4);
+}
+
+[class*="-bold"] {
+  font-weight: var(--font-weight-1);
+}
+[class*="-medium"] {
+  font-weight: var(--font-weight-2);
+}
+[class*="-regular"] {
+  font-weight: var(--font-weight-3);
+}

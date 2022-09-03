@@ -1,0 +1,51 @@
+.bt {
+  height: 2rem;
+  padding-inline: 0.875rem;
+  border-radius: var(--radius-1);
+  font-weight: var(--font-weight-1);
+  font-size: var(--font-size-3);
+  border: 0.094rem solid transparent;
+  appearance: none;
+  background-color: var(--color-grey-5);
+  color: var(--color-grey-2);
+  cursor: pointer;
+  transition: background-color var(--animation-duration),
+    border var(--animation-duration), color var(--animation-duration);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal;
+}
+
+.bt:hover {
+  background-color: var(--color-grey-4);
+  color: var(--color-grey-1);
+}
+
+.bt.bt-primary {
+  background-color: var(--color-brand-1);
+  color: var(--fixed-white);
+}
+
+.bt.bt-primary:hover {
+  background-color: var(--color-brand-2);
+}
+
+.bt.bt-outline {
+  background-color: transparent;
+  border-color: var(--color-grey-5);
+  color: var(--color-grey-2);
+}
+
+.bt.bt-outline:hover,
+.bt.bt-outline.actived {
+  background-color: va(--color-brand-3);
+  border-color: var(--color-brand-1);
+  color: var(--color-brand-1);
+}
+
+.bt.bt-icon {
+  height: 1.625rem;
+  padding-inline: 0.5rem;
+  font-family: var(--font-family-2);
+}

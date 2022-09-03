@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../styles/globalStyles.css" />
+    <link rel="stylesheet" href="../../styles/fonts.css" />
+    <link rel="stylesheet" href="../../styles/colors.css" />
+    <link rel="stylesheet" href="../../styles/buttons.css" />
+    <link rel="stylesheet" href="../../styles/modal.css" />
+    <link rel="stylesheet" href="../../styles/flex.css" />
+    <link rel="stylesheet" href="../../styles/gap.css" />
+    <link rel="stylesheet" href="../../styles/inputs.css" />
+    <link rel="stylesheet" href="../../styles/margins.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon">
+    <meta name="theme-color" content="#317EFB"/>
+    <title>Control Finance</title>
+    <meta name="description" content="Control Finance - Seu controle financeiro">
+  </head>
+  <body>
+    <nav class="navbar bg-color-grey-5">
+      <div class="container">
+        <div class="flex-justify-between navbar-area">
+          <h1 class="font-1-bold color-grey-1"><span class="color-brand-1">Control</span> Finance</h1>
+          <button
+            class="bt bt-primary"
+            aria-expanded="false"
+            aria-controls="create-new-value"
+            aria-haspopup="dialog"
+            onclick="modalController(this)"
+          >
+            Registrar novo valor
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <header class="header-options flex-justify-between flex-align-center mt-2">
+          <h2 class="header-title font-2-medium color-grey-1">Resumo financeiro</h2>
+          <div class="header-options-buttons">
+            <button type="button" data-option="all" class="bt bt-outline actived">Todos</button>
+            <button type="button" data-option="0" class="bt bt-outline">Entradas</button>
+            <button type="button" data-option="1" class="bt bt-outline">Saídas</button>
+          </div>
+        </header>
+        <div class="sum flex-justify-between flex-align-center bg-color-grey-4 my-2">
+          <h3 class="font-3-medium">Soma dos valores</h3>
+          <span class="sum-value font-3-medium color-grey-1"></span>
+        </div>
+        <ul class="values"></ul>
+      </div>
+    </main>
+
+    <div
+      id="create-new-value"
+      class="modal"
+      aria-labelledby="title"
+      aria-describedby="desc"
+      role="dialog"
+      tabindex="-1"
+    >
+      <div class="modal-header">
+        <h3 class="font-2-bold color-grey-1" id="title">Registro de valor</h3>
+        <button
+          class="bt bt-icon"
+          aria-expanded="false"
+          aria-controls="create-new-value"
+          aria-haspopup="dialog"
+          onclick="modalController(this, event)"
+          aria-label="Fechar Caixa de Registro"
+        >
+          X
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="font-3-regular color-grey-2" id="desc">
+          Digite o valor e em seguida aperte no botão referente ao tipo do valor
+        </p>
+        <div class="input-group">
+          <label for="value" class="font-3-medium">Valor</label>
+          <input type="text" placeholder="00.00" id="value" name="value" />
+        </div>
+        <div class="flex-align-center_desktop gap-1 my-1 flex-wrap__mobile flex-column__mobile">
+          <label class="font-3-medium flex-1__mobile">Tipo de valor</label>
+         
+          <input type="radio" hidden id="0" value="0" name="valueType">
+          <label class="bt bt-outline" tabindex="0" for="0">Entrada</label>
+          
+          <input type="radio" hidden id="1" value="1" name="valueType">
+          <label class="bt bt-outline" tabindex="0" for="1">Saída</label>
+        </div>
+        <div class="flex-end flex-gap-1 flex-wrap__mobile">
+          <button
+            class="bt flex-1__mobile "
+            aria-expanded="false"
+            aria-controls="create-new-value"
+            aria-haspopup="dialog"
+            onclick="modalController(this, event)"
+          >
+            Cancelar
+          </button>
+          <button type="button" class="bt flex-1__mobile bt-primary" id="createValue" >Criar</button>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+      integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script src="index.js"></script>
+    <script src="../../scripts/modal.js"></script>
+  </body>
+</html>

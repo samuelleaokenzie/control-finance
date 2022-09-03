@@ -1,0 +1,35 @@
+.input-group{
+    --input-height: 2.75rem;
+    height: calc(var(--input-height) * 2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.input-group input{
+    width: 100%;
+    height: var(--input-height);
+    padding-left: 2.5rem;
+    border-radius: var(--radius-1);
+    border: 0.094rem solid var(--color-grey-3);
+    font-size: var(--font-size-3);
+    color: var(--color-grey-2);
+}
+
+.input-group input:focus-visible{
+    outline: var(--color-brand-1) auto 1px;
+}
+
+.input-group::before{
+    content: "R$";
+    font-size: var(--font-size-3);
+    color: var(--color-grey-2);
+    position: absolute;
+    bottom: 0;
+    left: 1rem;
+    height: var(--input-height);
+    display: flex;
+    align-items: center;
+}

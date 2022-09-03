@@ -1,0 +1,38 @@
+[class*="flex"]{
+    display: flex;
+}
+
+.flex-end{
+    justify-content: flex-end;
+}
+
+.flex-justify-between{
+    justify-content: space-between;
+}
+
+.flex-align-center{
+    align-items: center;
+}
+
+.flex-gap-1{
+    gap: 1rem;
+}
+
+.flex-align-center_desktop{
+    align-items: center;
+}
+
+@media(max-width: 800px) {
+    .flex-column__mobile{
+        flex-direction: column;
+    }
+    .flex-wrap__mobile{
+        flex-wrap: wrap;
+    }
+    .flex-1__mobile{
+        flex: 1;
+    }
+    .flex-align-center_desktop{
+        align-items: inherit;
+    }
+}
