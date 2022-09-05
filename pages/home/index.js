@@ -1,12 +1,16 @@
 const valuesCategory = ["Entrada", "Saída"];
 
-let insertedValues = [{
+let insertedValues = [
+  {
     id: 0,
     value: 99,
-    categoryID: 0
-}];
+    categoryID: 0,
+  },
+];
 
 let insertedValuesfiltered = [];
+
+let categoryActived = null
 
 function calcAllValuesForCategory(array = []) {
   const sum = array.reduce((previousValue, currentValue) => {
@@ -23,8 +27,31 @@ function filterValues(arrayOld, id) {
   return insertedValuesfiltered;
 }
 
-function analitycsContentValues(message) {
+function removeValue(id) {
+  document.querySelector(`[data-key='${id}']`).remove();
 
+  insertedValuesfiltered = insertedValuesfiltered.filter((e) => {
+    return e.id !== id;
+  });
+
+  insertedValues = insertedValues.filter((e) => {
+    return e.id !== id;
+  });
+
+  if(Number(categoryActived) == 0 || Number(categoryActived) == 1){
+    insertValueSumInDOM(insertedValuesfiltered);
+    analitycsContentValues(`Nenhum valor cadastrado para categoria ${valuesCategory[Number(categoryActived)]}`);
+  } else {
+    insertValueSumInDOM(insertedValues);
+    analitycsContentValues("Nenhum valor cadastrado");
+  }
+
+  renderInDom(".values", null);
+
+  return;
+}
+
+function analitycsContentValues(message) {
   if (document.querySelector(".value") == null) {
     if (document.querySelector(".message-nothing-values")) {
       document.querySelector(".message-nothing-values").remove();
@@ -76,6 +103,8 @@ ButtonsFilter.forEach((ButtonFilter) => {
   ButtonFilter.addEventListener("click", () => {
     const id = ButtonFilter.getAttribute("data-option");
 
+    categoryActived = id
+
     document
       .querySelectorAll(`[data-option]`)
       .forEach((element) => element.classList.remove("actived"));
@@ -91,9 +120,10 @@ ButtonsFilter.forEach((ButtonFilter) => {
               <li class="value" tabindex="-1" data-category="${
                 insertedValue.categoryID
               }" data-key="${insertedValue.id}">
-                 <h4 class="font-3-medium color-grey-1">${
-                   Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(insertedValue.value)
-                 }</h4>
+                 <h4 class="font-3-medium color-grey-1">${Intl.NumberFormat(
+                   "pt-br",
+                   { style: "currency", currency: "BRL" }
+                 ).format(insertedValue.value)}</h4>
                  <div class="flex-align-center gap-1">
                    <span class="value-category">${
                      valuesCategory[insertedValue.categoryID]
@@ -126,7 +156,10 @@ ButtonsFilter.forEach((ButtonFilter) => {
           <li class="value" tabindex="-1" data-category="${
             insertedValue.categoryID
           }" data-key="${insertedValue.id}">
-          <h4 class="font-3-medium color-grey-1">${Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(insertedValue.value)}</h4>
+          <h4 class="font-3-medium color-grey-1">${Intl.NumberFormat("pt-br", {
+            style: "currency",
+            currency: "BRL",
+          }).format(insertedValue.value)}</h4>
           <div class="flex-align-center gap-1">
             <span class="value-category">${
               valuesCategory[insertedValue.categoryID]
@@ -149,8 +182,10 @@ ButtonsFilter.forEach((ButtonFilter) => {
 insertValueSumInDOM(insertedValues);
 
 function insertValueSumInDOM(arr) {
-  document.querySelector(".sum .sum-value").textContent =
-  Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(calcAllValuesForCategory(arr));
+  document.querySelector(".sum .sum-value").textContent = Intl.NumberFormat(
+    "pt-br",
+    { style: "currency", currency: "BRL" }
+  ).format(calcAllValuesForCategory(arr));
 }
 
 insertedValues.map((insertedValue) => {
@@ -160,7 +195,10 @@ insertedValues.map((insertedValue) => {
     <li class="value" tabindex="-1" data-category="${
       insertedValue.categoryID
     }" data-key="${insertedValue.id}">
-      <h4 class="font-3-medium color-grey-1">${Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(insertedValue.value)}</h4>
+      <h4 class="font-3-medium color-grey-1">${Intl.NumberFormat("pt-br", {
+        style: "currency",
+        currency: "BRL",
+      }).format(insertedValue.value)}</h4>
       <div class="flex-align-center gap-1">
         <span class="value-category">${
           valuesCategory[insertedValue.categoryID]
@@ -174,22 +212,6 @@ insertedValues.map((insertedValue) => {
     </li>`
   );
 });
-
-function removeValue(id) {
-  document.querySelector(`[data-key='${id}']`).remove();
-
-  insertedValues = insertedValues.filter((e) => {
-    return e.id !== id;
-  });
-
-  renderInDom(".values", null);
-
-  analitycsContentValues("Nenhum valor cadastrado");
-
-  insertValueSumInDOM(insertedValues);
-
-  return insertedValues;
-}
 
 function insertValue() {
   const inputCreate = document.querySelector("input[name='value']");
@@ -247,9 +269,14 @@ function insertValue() {
         ".values",
         `
             <li class="value" tabindex="-1" data-category="${categoryID}" data-key="${id}">
-              <h4 class="font-3-medium color-grey-1">${ Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(value)}</h4>
+              <h4 class="font-3-medium color-grey-1">${Intl.NumberFormat(
+                "pt-br",
+                { style: "currency", currency: "BRL" }
+              ).format(value)}</h4>
               <div class="flex-align-center gap-1">
-                <span class="value-category">${valuesCategory[categoryID]}</span>
+                <span class="value-category">${
+                  valuesCategory[categoryID]
+                }</span>
                 <button class="bt bt-icon" onclick="removeValue(${id})" aria-label="Remover Valor">
                   <i class="fa-solid fa-trash"></i>
                 </button>
