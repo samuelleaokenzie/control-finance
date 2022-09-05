@@ -1,12 +1,6 @@
 const valuesCategory = ["Entrada", "Saída"];
 
-let insertedValues = [
-  {
-    id: 0,
-    value: 99,
-    categoryID: 0,
-  },
-];
+let insertedValues = [];
 
 let insertedValuesfiltered = [];
 
