@@ -45,6 +45,14 @@
 
 .values .bt-icon {
   border-radius: var(--radius-2);
+  color: var(--color-grey-3);
+  background-color: transparent;
+  border-color: var(--color-grey-4);
+}
+
+.values .bt-icon:hover {
+  color: var(--color-grey-1);
+  background-color: var(--color-grey-5);
 }
 
 .message-nothing-values{
